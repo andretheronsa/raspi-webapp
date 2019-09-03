@@ -1,11 +1,4 @@
-FROM alpine:latest
-RUN apk --no-cache add \
-    python3 \
-    python3-dev \
-    py-pip \
-    build-base \
-  && pip install virtualenv \
-  && rm -rf /var/cache/apk/*
+FROM python:3-alpine
 COPY . /app
 WORKDIR /app
 RUN virtualenv /env && /env/bin/pip install -r /app/requirements.txt
